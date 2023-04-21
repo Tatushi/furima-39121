@@ -1,7 +1,7 @@
 # DB 設計
 
-## users table
 
+## users table
 
 | Column             | Type                | Options                   |
 |--------------------|---------------------|---------------------------|
@@ -19,10 +19,10 @@
 
 * has_many :items
 * has_many :orders
-* has_many :comments
+
+
 
 ## items table
-
 
 | Column            |  Type       | Options                      |
 |-------------------|-------------|------------------------------|
@@ -41,11 +41,11 @@
 ### Association
 
 - belongs_to :user
-- has_many :comments
 - has_one :order
 
-## orders table
 
+
+## orders table
 
 | Column      | Type       | Options                        |
 |-------------|------------|--------------------------------|
@@ -59,8 +59,9 @@
 - belongs_to :user
 - has_one :payment
 
-## payments table
 
+
+## payments table
 
 | Column        | Type       | Options                          | 
 |---------------|------------|----------------------------------|
