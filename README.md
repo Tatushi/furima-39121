@@ -32,7 +32,7 @@
 | category_id       | integer     | null: false,                 |
 | item_status_id    | integer     | null: false,                 |
 | shipping_cost_id  | integer     | null: false,                 |
-| shipping_date_id  | integer     | null: false,
+| shipping_date_id  | integer     | null: false,                 |
 | prefecture_id     | integer     | null: false,                 |
 | price             | integer     | null: false,                 |
 |----------------------------------------------------------------|
