@@ -29,11 +29,11 @@
 | user              | references  | null: false,foreign_key:true |
 | name              | string      | null: false,                 |
 | description       | text        | null: false,                 |
-| category          | integer     | null: false,                 |
-| item_status       | integer     | null: false,                 |
-| shipping_cost     | integer     | null: false,                 |
-| shipping_date     | integer     | null: false,                 |
-| prefecture        | integer     | null: false,                 |
+| category_id       | integer     | null: false,                 |
+| item_status_id    | integer     | null: false,                 |
+| shipping_cost_id  | integer     | null: false,                 |
+| shipping_date_id  | integer     | null: false,                 |
+| prefecture_id     | integer     | null: false,                 |
 | price             | integer     | null: false,                 |
 
 
@@ -66,7 +66,7 @@
 |---------------|------------|----------------------------------|
 | order         | references | null: false, foreign_key: true   |
 | postcode      | string     | null: false,                     |
-| prefecture    | integer    | null: false,                     |
+| prefecture_id | integer    | null: false,                     |
 | city          | string     | null: false,                     |
 | block         | string     | null: false,                     |
 | building      | string     |                                  |
