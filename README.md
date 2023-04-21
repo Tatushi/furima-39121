@@ -1,24 +1,90 @@
-# README
+# DB 設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users table
 
-Things you may want to cover:
+|----------------------------------------------------------------------|
+| Column             | Type                | Options                   |
+|--------------------|---------------------|---------------------------|
+| nickname           | string              | null: false, unique: true |
+| email              | string              | null: false, unique: true |
+| encrypted_password | string              | null: false  unique: true |
+| last_name          | string              | null: false               |
+| first_name         | string              | null: false               |
+| last_name_kana     | string              | null: false               |
+| first_name_kana    | string              | null: false               |
+| birthday           | date                | null: false               |
+|----------------------------------------------------------------------|
 
-* Ruby version
+### Association
 
-* System dependencies
+* has_many :items
+* has_many :orders
+* has_many :comments
 
-* Configuration
+## items table
 
-* Database creation
+|----------------------------------------------------------------|
+| Column            |  Type       | Options                      |
+|-------------------|-------------|------------------------------|
+| user              | references  | null: false,foreign_key:true |
+| name              | string      | null: false,                 |
+| description       | text        | null: false,                 |
+| category_id       | integer     | null: false,                 |
+| item_status_id    | integer     | null: false,                 |
+| shipping_cost_id  | integer     | null: false,                 |
+| prefecture_id     | integer     | null: false,                 |
+| price             | integer     | null: false,                 |
+|----------------------------------------------------------------|
 
-* Database initialization
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs_to :user
+- has_many :comments
+- has_one :order
 
-* Deployment instructions
+## orders table
 
-* ...
+|-----------------------------------------------------------|
+| Column      | Type       | Options                        |
+|-------------|------------|--------------------------------|
+| user        | references | null: false, foreign_key: true |
+| item        | references | null: false, foreign_key: true |
+|-----------------------------------------------------------|
+
+### Association
+
+- belongs_to :item
+- belongs_to :user
+- has_one :payment
+
+## payments table
+
+|---------------------------------------------------------------|
+| Column        | Type       | Options                          | 
+|---------------|------------|----------------------------------|
+| orders        | references | null: false, foreign_key: true   |
+| postcode      | string     | null: false,                     |
+| prefecture_id | integer    | null: false,                     |
+| city          | string     | null: false,                     |
+| block         | string     | null: false,                     |
+| building      | string     |                                  |
+| phone_number  | string     | null: false,                     |
+|---------------------------------------------------------------|
+
+### Association
+- belongs_to :order
+
+## comments table
+
+|-----------------------------------------------------------|
+| Column      | Type       | Options                        |
+|-------------|------------|--------------------------------|
+| user        | references | null: false, foreign_key: true |
+| item        | references | null: false, foreign_key: true |
+| text        | text       | null: false,                   |
+|-----------------------------------------------------------|
+
+### Association
+- belongs_to :user
+- belongs_to :item
