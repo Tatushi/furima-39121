@@ -130,9 +130,9 @@
 
     <% @items.each do |item| %>
       <li class='list'>
-        <%= link_to item_path(item) do %>
+
         <div class='item-img-content'>
-        <%= image_tag item.image.variant(resize: '500x500'), class: "item-img" if item.image.attached? %>
+        <%#= image_tag item.image.variant(resize: '500x500'), class: "item-img" if item.image.attached? %>
     
           <%# if item.order != nil %>
           <div class='sold-out'>
@@ -152,7 +152,7 @@
             </div>
           </div>
         </div>
-        <% end %>
+     
       </li>
       <% end %>
 
