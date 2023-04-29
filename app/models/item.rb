@@ -4,9 +4,6 @@ class Item < ApplicationRecord
   # テーブルとのアソシエーション
   belongs_to :user
 
-  # has_many :comments
-
-  # アクティブハッシュとのアソシエーション
   belongs_to :category
   belongs_to :prefecture
   belongs_to :item_status
