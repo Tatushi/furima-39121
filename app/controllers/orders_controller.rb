@@ -24,6 +24,16 @@ class OrdersController < ApplicationController
       :telephone_number).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+  
+    def move_to_index
+      if current_user == @item.user
+        redirect_to root_path
+    end
+  end
+
   def pay_item
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
