@@ -63,7 +63,7 @@ RSpec.describe OrderPayment, type: :model do
       it '郵便番号にハイフンがないと保存できないこと' do
         @order_payment.postcode = 1_234_567
         @order_payment.valid?
-        expect(@order_payment.errors.full_messages).to include('Include hyphen(-)')
+        expect(@order_payment.errors.full_messages).to include('Postcode is invalid. Include hyphen(-)')
       end
       it '都道府県が「---」だと保存できないこと' do
         @order_payment.prefecture_id = 0
