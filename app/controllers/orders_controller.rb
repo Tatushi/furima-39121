@@ -1,11 +1,14 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :non_purchased_item, only: [:index, :create]
+  before_action :set_item, only: [:index, :create]
 
   def index
     @order_payment = OrderPayment.new
+   if current_user.id == @item.user_id || @item.order.present?
+      redirect_to root_path
+   end
   end
-
+  
   def create
     @order_payment = OrderPayment.new(order_params)
     if @order_payment.valid?
@@ -21,17 +24,12 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order_payment).permit(:postcode, :prefecture_id, :city, :block, :building_name,
-      :phone_number).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
+          :phone_number).merge(user_id: current_user.id, item_id: @item.id, token: params[:token])
+
   end
 
   def set_item
     @item = Item.find(params[:item_id])
-  end
-  
-    def move_to_index
-      if current_user == @item.user
-        redirect_to root_path
-    end
   end
 
   def pay_item
@@ -43,8 +41,4 @@ class OrdersController < ApplicationController
     )
   end
 
-  def non_purchased_item
-    @item = Item.find(params[:item_id])
-    redirect_to root_path if current_user.id == @item.user_id || @item.order.present?
-  end
 end
