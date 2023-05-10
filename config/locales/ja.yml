@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    attributes:
+      user_spec:
+        nickname: ニックネーム
+        Last name: 苗字(姓)
+        First name: 名前(名)
