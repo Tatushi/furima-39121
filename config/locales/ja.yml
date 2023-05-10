@@ -1,7 +1,10 @@
 ja:
   activerecord:
     attributes:
-      user_spec:
+      user:
         nickname: ニックネーム
         Last name: 苗字(姓)
+        Last name kana: 苗字（フリガナ）
         First name: 名前(名)
+        First name kana: 名前（フリガナ）
+        Birthday: 誕生日
