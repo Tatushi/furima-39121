@@ -10,6 +10,8 @@ const pay = () => {
   cvcElement.mount('#cvc-form');
 
   const submit = document.getElementById("button");
+  console.log('test')
+
   submit.addEventListener("click", (e) => {
     e.preventDefault();
     payjp.createToken(numberElement).then(function (response) {
